@@ -32,7 +32,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #F4F3F8;
 }
 
 .centere {
@@ -45,7 +44,6 @@
   display: inline-flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    /* align-content: center; */
     align-items: center;
     gap: 12px;
 }
@@ -58,15 +56,18 @@
 
 .text-logo {
   font-size: 22px;
-  font-weight: 900;
+  font-weight: 800;
   color: #1295FD;
   display: inline-grid;
   justify-items: center;
+  gap: 5px;
+
 }
 
 .text-logo span {
   font-size: 12px;
   color: #B7BBBE;
+  font-weight: 500;
 }
 
 .btn {
@@ -76,6 +77,8 @@
   border: none;
   padding: 15px;
   border-radius: 30px;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .btn i {
