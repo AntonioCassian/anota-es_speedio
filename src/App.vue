@@ -32,6 +32,8 @@
           </button>
         </div>
       </form>
+
+      
     </div>
   </div>
 </template>
@@ -114,9 +116,11 @@ form {
   display: inline-flex;
   justify-content: space-between;
 }
-.mt-5 .btn{
+
+.mt-5 .btn {
   width: 80%;
 }
+
 .ic-trash {
   background: #EB735D;
   width: 15%;
@@ -126,7 +130,10 @@ form {
   align-items: center;
   justify-content: center;
 }
-.ic-trash i{
+
+.ic-trash i {
   font-size: 25px;
 }
+
+
 </style>
