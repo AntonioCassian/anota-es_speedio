@@ -1,30 +1,46 @@
 <script setup lang="ts">
 
-
-
 </script>
 
 <template>
-  <div class="ceter">
+  <div class="centered">
     <div class="centere">
-      <div class="logo">
-        <div class="icon-logo">
-          <i class="pi pi-paperclip"></i>
+      <form action="">
+        <textarea class="textarea" rows="7" cols="40" placeholder="Exp.: Ao ligar falar com Luiza"></textarea>
+        <label for="valor" class="label">Potencial do négocio</label>
+        <input id="valor" placeholder="R$00,00" type="number" class="input-number input">
+
+
+        <label for="category" class="label">Categorização</label>
+        <select class="input" id="category">
+          <option>importante</option>
+          <option>B</option>
+          <option>C</option>
+        </select>
+
+        <label for="date" class="label">Lembrete</label>
+        <input id="date" placeholder="Selecione uma data" type="text" onfocus="this.type='date'"
+          onblur="if (!this.value) this.type='text'" class="input">
+
+
+        <div class="mt-5">
+          <div class="ic-trash">
+            <i class="pi pi-trash"></i>
+          </div>
+          <button class="btn">
+            Salvar
+          </button>
         </div>
-        <div class="text-logo">
-          Anotações
-          <span>by Speedio</span>
-        </div>
-      </div>
-      <button class="btn">
-        <i class="pi pi-plus"></i>
-        Criar anotação
-      </button>
+      </form>
     </div>
   </div>
 </template>
 
 <style scoped>
+.centered {
+  margin-top: 30px;
+}
+
 .ceter {
   width: 500px;
   height: 400px;
@@ -40,34 +56,45 @@
   align-items: center;
   gap: 60px;
 }
-.logo{
-  display: inline-flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 12px;
+
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-.icon-logo i {
-  color: #B7BBBE;
-  font-size: 45px;
-  transform: scale(-1);
+.textarea {
+  resize: none;
+  border: none;
+  border-radius: 7px;
+  padding: 12px;
+  font-size: 14px;
+  outline: none;
 }
 
-.text-logo {
-  font-size: 22px;
-  font-weight: 800;
-  color: #1295FD;
-  display: inline-grid;
-  justify-items: center;
-  gap: 5px;
-
-}
-
-.text-logo span {
+.label {
   font-size: 12px;
   color: #B7BBBE;
-  font-weight: 500;
+  font-weight: 800;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.input {
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+}
+
+.input-number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.select {
+  background: #B7BBBE;
+  font-size: 10px;
+  padding: 4px;
 }
 
 .btn {
@@ -81,7 +108,25 @@
   font-size: 16px;
 }
 
-.btn i {
-  margin-right: 4px;
+
+.mt-5 {
+  margin-top: 100px;
+  display: inline-flex;
+  justify-content: space-between;
+}
+.mt-5 .btn{
+  width: 80%;
+}
+.ic-trash {
+  background: #EB735D;
+  width: 15%;
+  border-radius: 100px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ic-trash i{
+  font-size: 25px;
 }
 </style>
