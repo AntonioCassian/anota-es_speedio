@@ -1,13 +1,14 @@
 <template>
     <div>
-        <form action="">
-        <textarea class="textarea" rows="7" cols="40" placeholder="Exp.: Ao ligar falar com Luiza"></textarea>
+        <form @submit.prevent="submit">
+        <textarea class="textarea" v-model.trim="anotation.text" rows="7" cols="40" placeholder="Exp.: Ao ligar falar com Luiza"></textarea>
+
         <label for="valor" class="label">Potencial do négocio</label>
-        <input id="valor" placeholder="R$00,00" type="number" class="input-number input">
+        <input id="valor" v-model="anotation.valor" placeholder="R$00,00" type="number" class="input-number input">
 
 
         <label for="category" class="label">Categorização</label>
-        <select class="input" id="category">
+        <select class="input" id="category" v-model="anotation.categoria">
           <option value="" disabled></option>
           <option>importante</option>
           <option>irrelevante</option>
@@ -15,14 +16,14 @@
         </select>
 
         <label for="date" class="label">Lembrete</label>
-        <input id="date" placeholder="Selecione uma data" type="text" onfocus="this.type='date'"
+        <input id="date" v-model="anotation.data" placeholder="Selecione uma data" type="text" onfocus="this.type='date'"
           onblur="if (!this.value) this.type='text'" class="input">
 
 
         <div class="mt-5">
-          <div class="ic-trash">
+          <button class="ic-trash" @click.prevent="limpar">
             <i class="pi pi-trash"></i>
-          </div>
+          </button>
           <Button text="Salvar"/>
         </div>
       </form>
@@ -31,9 +32,35 @@
 
 <script setup lang="ts">
 import Button from '../components/button/Button.vue';
+import api from '../services/api'
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const route = useRouter();
+
+const anotation = ref({
+  text: '',
+  valor: '',
+  categoria: '',
+  data: ''
+});
+
+const limpar = () => {
+  anotation.value.text = '';
+  anotation.value.valor = '';
+  anotation.value.categoria = '';
+  anotation.value.data = '';
+};
+
+const submit = async() => {
+  await api.post("/anotations", anotation.value). then( () => {
+    limpar()
+  })
+  route.push({path: '/'});
+}
 
 
 </script>
+
 
 <style>
 
@@ -90,11 +117,13 @@ form {
 .ic-trash {
   background: #EB735D;
   width: 15%;
+  border: none;
   border-radius: 100px;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .ic-trash i {

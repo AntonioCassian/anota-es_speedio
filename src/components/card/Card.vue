@@ -1,23 +1,33 @@
 <template>
   <div>
+    <PopUp />
     <div class="card" v-for="anotation in props.anotations" :key="anotation.id">
       <i class="pi pi-paperclip i-clip"></i>
       <div class="text-card">
-        <p>{{ anotation.anotation }}</p>
-        <span>{{ anotation.date }}</span>
+        <p>{{ anotation.text }}</p>
+        <span>{{ anotation.data }}</span>
       </div>
-      <i class="pi pi-trash card-del"></i>
+      <i class="pi pi-trash card-del" @click="openPopup"></i>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, PropType } from 'vue';
+import PopUp from '../pop/PopUp.vue';
+import { defineProps, PropType, ref } from 'vue';
 
+const showPopup = ref(false);
+
+const openPopup = () => {
+  showPopup.value = true;
+  console.log(showPopup.value)
+}
 interface AnotationInterface {
-  id: number,
-  anotation: string,
-  date: string
+    id: number | string,
+    text: string,
+    valor?: number,
+    categoria?: string,
+    data: string
 }
 
 const props = defineProps({

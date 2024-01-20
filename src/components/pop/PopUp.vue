@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="pop-up">
+    <div class="pop-up" v-if="props.showPopup">
       <div class="header-pop">
         Deseja excluir esta anotação
         <i class="pi pi-times"></i>
@@ -25,6 +25,11 @@
 </template>
 
 <script setup lang="ts">
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  showPopup: Boolean
+});
 
 </script>
 

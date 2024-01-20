@@ -1,13 +1,20 @@
 <template>
     <div class="center">
         <Logo />
-        <Button text="Criar anotação" icone="pi pi-plus"/>
+        <Button text="Criar anotação" icone="pi pi-plus" :onClick="proximaTela"/>
     </div>
 </template>
 
 <script setup lang="ts">
 import Button from '../components/button/Button.vue';
 import Logo from '../components/logo/Logo.vue';
+import { useRouter } from 'vue-router';
+const route = useRouter();
+
+
+const proximaTela = () => {
+    route.push({path: '/form'})
+}
 </script>
 
 <style scoped>

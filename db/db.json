@@ -1,0 +1,39 @@
+{
+  "anotations": [
+    {
+      "id": 1,
+      "text": "Ao ligar o computador falar com Luiza",
+      "valor": 2,
+      "categoria": "importante",
+      "data": "10/05/2024"
+    },
+    {
+      "id": 2,
+      "text": "Ao ligar o computador falar com Luiza",
+      "valor": 2,
+      "categoria": "importante",
+      "data": "10/05/2024"
+    },
+    {
+      "id": 3,
+      "text": "Ao ligar o computador falar com Luiza",
+      "valor": 2,
+      "categoria": "importante",
+      "data": "10/05/2024"
+    },
+    {
+      "id": "6c8b",
+      "text": "aaaaaaaaaaaaaa",
+      "valor": 556,
+      "categoria": "importante",
+      "data": "2024-01-27"
+    },
+    {
+      "id": "9fc4",
+      "text": "oi",
+      "valor": 660,
+      "categoria": "irrelevante",
+      "data": "2024-01-26"
+    }
+  ]
+}

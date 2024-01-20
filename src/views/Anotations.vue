@@ -8,55 +8,37 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import Card from '../components/card/Card.vue';
 import Button from '../components/button/Button.vue';
+import api from '../services/api';
 // import PopUp from '../components/pop/PopUp.vue';
 
+// const showPopup = ref(false);
+
 interface AnotationInterface {
-    id: number,
-    anotation: string,
-    date: string
+    id: number | string,
+    text: string,
+    valor?: number,
+    categoria?: string,
+    data: string
 }
 
-const anotations = ref<AnotationInterface[]>(
-    [
-        {
-            id: 1,
-            anotation: 'Ao ligar o computador falar com Luiza',
-            date: '10/05/2024'
-        },
-        {
-            id: 2,
-            anotation: 'Ao ligar o computador falar com Luiza',
-            date: '10/05/2024'
-        },
-        {
-            id: 3,
-            anotation: 'Ao ligar o computador falar com Luiza',
-            date: '10/05/2024'
-        },
-        {
-            id: 4,
-            anotation: 'Ao ligar o computador falar com Luiza',
-            date: '10/05/2024'
-        },
-        {
-            id: 5,
-            anotation: 'Ao ligar o computador falar com Luiza',
-            date: '10/05/2024'
-        },
-        {
-            id: 6,
-            anotation: 'Ao ligar o computador falar com Luiza',
-            date: '10/05/2024'
-        },
-    ]
-)
+const anotations = ref<AnotationInterface[]>([]);
+
+
+const getAnotation = async () => {
+    const response = await api.get('/anotations')
+    anotations.value = response.data;
+}
+
+onMounted(getAnotation);
+
+
 </script>
 
 <style scoped>
-.anot-foo{
+.anot-foo {
     margin-top: 80px;
 }
 </style>

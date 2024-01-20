@@ -5,10 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "backend": "json-server --watch db/db.json",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.6.5",
+    "json-server": "^1.0.0-alpha.21",
     "primeicons": "^6.0.1",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
