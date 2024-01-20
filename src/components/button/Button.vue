@@ -1,14 +1,20 @@
 <template>
-  <div>
-    <button class="btn">
-      <i class="pi pi-plus"></i>
-      Criar anotação
-    </button>
-  </div>
+  <button class="btn">
+    <i v-if="icone" :class="icone"></i>
+    {{ text }}
+  </button>
 </template>
 
 <script setup lang="ts">
+import { defineProps,toRefs } from 'vue';
+interface ButonInterface{
+  text: string,
+  icone?: string,
+}
 
+const props = defineProps<ButonInterface>()
+
+const { text, icone }= toRefs(props);
 </script>
 
 <style scoped>
@@ -21,6 +27,7 @@
   border-radius: 30px;
   font-weight: 400;
   font-size: 16px;
+  width: 100%;
 }
 
 .btn i {

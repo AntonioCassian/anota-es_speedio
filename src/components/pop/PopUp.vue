@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="pop-up">
+  <div>
+    <div class="pop-up">
       <div class="header-pop">
         Deseja excluir esta anotação
         <i class="pi pi-times"></i>
@@ -21,7 +21,7 @@
         </button>
       </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -35,6 +35,7 @@
   width: 50%;
   top: 30%;
   left: 30%;
+  z-index: 9;
 }
 
 .header-pop {
@@ -84,5 +85,4 @@
   cursor: pointer;
   border: none;
 }
-
 </style>
