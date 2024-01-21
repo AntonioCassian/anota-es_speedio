@@ -1,7 +1,7 @@
 <template>
   <div>
-    <PopUp />
     <div class="card" v-for="anotation in props.anotations" :key="anotation.id">
+      <PopUp :show="isOpen" :delet="anotation.id" @close="isOpen = !isOpen" />
       <i class="pi pi-paperclip i-clip"></i>
       <div class="text-card">
         <p>{{ anotation.text }}</p>
@@ -16,18 +16,20 @@
 import PopUp from '../pop/PopUp.vue';
 import { defineProps, PropType, ref } from 'vue';
 
-const showPopup = ref(false);
+const isOpen = ref(false);
 
 const openPopup = () => {
-  showPopup.value = true;
-  console.log(showPopup.value)
+  isOpen.value = !isOpen.value;
 }
+
+
+
 interface AnotationInterface {
-    id: number | string,
-    text: string,
-    valor?: number,
-    categoria?: string,
-    data: string
+  id: number | string,
+  text: string,
+  valor?: number,
+  categoria?: string,
+  data: string
 }
 
 const props = defineProps({

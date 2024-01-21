@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="pop-up" v-if="props.showPopup">
+    <div class="pop-up" v-show="props.show">
       <div class="header-pop">
         Deseja excluir esta anotação
-        <i class="pi pi-times"></i>
+        <i class="pi pi-times" @click="$emit('close')"></i>
       </div>
 
       <div class="body-pop">
@@ -13,10 +13,10 @@
       </div>
 
       <div class="pop-foo">
-        <button class="outline">
+        <button class="outline" @click="$emit('close')">
           Cancelar
         </button>
-        <button class="btn-foo">
+        <button class="btn-foo" @click="handleDelete(props.delet)">
           Excluir
         </button>
       </div>
@@ -27,8 +27,24 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 
+import api from '../../services/api';
+
+const handleDelete = async (id: number | string) => {
+  await api.delete(`/anotations/${id}`)
+    .then(() => {
+      alert('Anotação exçuida, atualize a tela por favor!')
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 const props = defineProps({
-  showPopup: Boolean
+  show: Boolean,
+  delet: {
+    required: true,
+    type: [Number, String]
+  }
 });
 
 </script>
